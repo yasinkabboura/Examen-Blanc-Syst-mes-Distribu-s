@@ -1,0 +1,46 @@
+<div class="container">
+  <div>
+    <p class=" mt-50 alert alert-danger" *ngIf="infractions.numberOfElements == 0">National Card Number is inccorect</p>
+
+  </div>
+  <div>
+  <form class="form-inline" >
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="input2" class="sr-only">National Card Number</label>
+      <input type="text" class="form-control" name="idcard" id="input2" [(ngModel)]="idCard" placeholder="National Card Number">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2" (click)="onClickSubmit()" style="float: right;">Search</button>
+  </form>
+  </div>
+  <div>
+      <table class="table table-striped" *ngIf="infractions.numberOfElements > 0">
+        <thead>
+        <tr>
+          <th scope="col">instant</th>
+          <th scope="col">vehicle Registration Number</th>
+          <th scope="col">vehicle Speed</th>
+          <th scope="col">vehicle Owner</th>
+          <th scope="col"> amount</th>
+          <th scope="col">status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let r of infractions.content">
+          <td>{{r.instant | date: 'MMM d, y, h:mm:ss a'}}</td>
+          <td>{{r.vehicleRegistrationNumber}}</td>
+          <td>{{r.vehicleSpeed}} KM/H</td>
+          <td>{{r.vehicleOwner}}</td>
+          <td>{{r.amount}}</td>
+          <td>{{r.status}}</td>
+        </tr>
+        </tbody>
+      </table>
+    <ul class="nav nav-pills list-inline mx-auto justify-content-center" >
+      <li *ngFor="let item of [].constructor(infractions.totalPages);let page=index">
+        <a [ngClass]="page==currentPage?'btn-info':'btn-outline-info'" (click)="gotoPage(page)" class="btn  ms-1 mt-1">{{page}}</a>
+      </li>
+    </ul>
+    </div>
+
+</div>
+

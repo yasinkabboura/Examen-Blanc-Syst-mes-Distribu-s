@@ -1,0 +1,48 @@
+<div class="container">
+  <table class="table table-striped" *ngIf="vehicles">
+    <thead>
+    <tr>
+      <th scope="col">registrationNumber</th>
+      <th scope="col">brand</th>
+      <th scope="col">model</th>
+      <th scope="col">fiscalPower</th>
+      <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let r of vehicles">
+      <td>{{r.registrationNumber}}</td>
+      <td>{{r.brand}}</td>
+      <td>{{r.model}}</td>
+      <td>{{r.fiscalPower}}</td>
+      <td><button class="btn btn-primary" (click)="openPopup(r.owner)">show owner</button> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" *ngIf="b">{{b.ownerName}}</h4>
+      </div>
+      <div class="modal-body">
+        <p *ngIf="b">ownerNationalIdCard : <b>{{b.ownerNationalIdCard}}</b></p>
+        <p *ngIf="b">Email : <b>{{b.ownerEmail}} </b></p>
+        <p *ngIf="b">Birth Day : <b>{{b.dateBirthDay | date: 'dd/MM/yyyy'}} </b></p>
+        <p *ngIf="b">ownerPhoneNumber : <b>{{b.ownerPhoneNumber}}</b></p>
+        <p *ngIf="b">ownerAddress : <b>{{b.ownerAddress}}</b></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

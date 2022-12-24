@@ -1,0 +1,18 @@
+<div class="container">
+<table class="table table-striped" *ngIf="radars">
+  <thead>
+  <tr>
+    <th scope="col">longitude</th>
+    <th scope="col">latitude</th>
+    <th scope="col">maxSpeed</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let r of radars">
+    <td>{{r.longitude}}</td>
+    <td>{{r.latitude}}</td>
+    <td>{{r.maxSpeed}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
