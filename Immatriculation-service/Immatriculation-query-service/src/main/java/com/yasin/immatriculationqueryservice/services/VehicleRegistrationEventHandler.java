@@ -37,6 +37,7 @@ public class VehicleRegistrationEventHandler {
         vehicle.setBrand(event.getPayload().getBrand());
         vehicle.setFiscalPower(event.getPayload().getFiscalPower());
 
+
         VehicleOwner vehicleOwner=vehicleOwnerRepository.findByOwnerNationalIdCard(event.getPayload().getOwnerNationalIdCard());
         if(vehicleOwner==null){
             vehicleOwner=new VehicleOwner();

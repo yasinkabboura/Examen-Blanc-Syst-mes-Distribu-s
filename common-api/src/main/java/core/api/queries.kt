@@ -23,12 +23,12 @@ class GetVehicleByRegistrationNumber(
     val registrationNumber : String,
 );
 
-class GetAllContraventions(
+class GetAllInfractions(
     val page : Int,
     val size : Int
 );
-class GetContraventionsByNationalCardNumber(
-    val nationalCardNumber : String,
+class GetInfractionsByNationalCardNumber(
+    val ownerNationalCardId : String,
     val page : Int,
     val size : Int
 );

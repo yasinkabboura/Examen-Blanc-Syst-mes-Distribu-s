@@ -31,6 +31,7 @@ public class RadarAggregate {
     @CommandHandler
     public RadarAggregate(CreateNewRadarCommand command) {
         log.info("CreateNewRadarCommand received");
+        if (command.getPayload().getMaxSpeed() <= 0) throw new NegativeVitesseException("La vitesse du radar ne doit pas etre négative ou nulle");
         AggregateLifecycle.apply(new RadarCreatedEvent(
                 command.getId(),
                 command.getPayload()
