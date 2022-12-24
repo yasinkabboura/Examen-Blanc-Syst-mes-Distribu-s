@@ -24,5 +24,6 @@ public class VehicleOwner {
     private String ownerPhoneNumber;
     private String ownerAddress;
     @OneToMany(mappedBy = "owner")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Vehicle> vehicles = new ArrayList<>();
 }

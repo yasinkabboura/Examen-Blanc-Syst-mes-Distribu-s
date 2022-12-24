@@ -25,11 +25,21 @@ public class InfractionQueryHandler {
     @QueryHandler
     public Page on(GetInfractionsByNationalCardNumber query){
         log.info(query.getOwnerNationalCardId());
-        if(query.getOwnerNationalCardId().equals(null) ||
-        query.getOwnerNationalCardId().equals("") ||
-        query.getOwnerNationalCardId().equals("undefined")){
-            return infractionRepository.findAll(PageRequest.of(query.getPage(),query.getSize()));
-        }
+//        if(query.getOwnerNationalCardId().equals(null) ||
+//        query.getOwnerNationalCardId().equals("") ||
+//        query.getOwnerNationalCardId().equals("undefined")){
+//            return infractionRepository.findAll(PageRequest.of(query.getPage(),query.getSize()));
+//        }
                    return infractionRepository.findAllByOwnerNationalCardId(query.getOwnerNationalCardId(), PageRequest.of(query.getPage(), query.getSize()));
         }
+    public Page getinfractions(GetInfractionsByNationalCardNumber query){
+
+//        if(query.getOwnerNationalCardId().equals(null) ||
+//        query.getOwnerNationalCardId().equals("") ||
+//        query.getOwnerNationalCardId().equals("undefined")){
+//            return infractionRepository.findAll(PageRequest.of(query.getPage(),query.getSize()));
+//        }
+        return infractionRepository.findAllByOwnerNationalCardId(query.getOwnerNationalCardId(), PageRequest.of(query.getPage(), query.getSize()));
     }
+    }
+
